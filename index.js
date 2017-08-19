@@ -18,9 +18,9 @@ function getRequestOptions(endpoint, fixture, baseUrl) {
 
     switch (param.in) {
       case 'body':
+        reqOpts.json = Boolean(contentType.match(/\/json/gi))
         if (contentType === 'application/x-www-form-urlencoded') {
           reqOpts.body = reqOpts.body ? `${reqOpts.body}&${param.name}=${value}` : `${param.name}=${value}`;
-          reqOpts.json = false;
         } else {
           reqOpts.body = value;
         }
